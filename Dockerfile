@@ -20,7 +20,8 @@ RUN git clone https://aur.archlinux.org/nginx-devel.git && \
 RUN  wget https://ghost.org/zip/ghost-0.7.5.zip && \
   unzip ghost-0.7.5.zip && \
   sed -i 's/preinstall/hhh/g' package.json && \
-  npm install --production
+  npm install --production && \
+  mv content content_default
 
 # Install the Configuration
 COPY config.js /usr/src/ghost/
