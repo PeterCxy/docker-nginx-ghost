@@ -16,6 +16,9 @@ RUN git clone https://aur.archlinux.org/nginx-devel.git && \
   cd /usr/src/ghost/nginx-devel && \
   sudo -u nobody makepkg -sci --noconfirm
 
+# Now remove the sudo program for security
+RUN pacman -R --noconfirm sudo
+
 # Populate basic Ghost environment
 RUN  wget https://ghost.org/zip/ghost-0.7.5.zip && \
   unzip ghost-0.7.5.zip && \
