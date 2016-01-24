@@ -1,4 +1,5 @@
 FROM base/archlinux:2015.06.01
+MAINTAINER Peter Cai <peter@typeblog.net>
 
 # Initialize the environment
 RUN pacman -Syyu --noconfirm
