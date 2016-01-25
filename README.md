@@ -14,5 +14,5 @@ To save the blog data, a Docker image is needed to be mounted into the container
 
 There are more environment variables to set:
 
-`GHOST_SITE_HTTPS` - Whether this site should force its urls to begin with `https`. Set to `true` to enable it.
+`GHOST_SITE_HTTPS` - Whether this site should force its urls to begin with `https`. Set to `true` to enable it.  
 `GHOST_SITE_URL` - Full url to this site without the scheme. e.g. `typeblog.net`
