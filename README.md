@@ -16,3 +16,4 @@ There are more environment variables to set:
 
 `GHOST_SITE_HTTPS` - Whether this site should force its urls to begin with `https`. Set to `true` to enable it.  
 `GHOST_SITE_URL` - Full url to this site without the scheme. e.g. `typeblog.net`
+`GHOST_MAILGUN_USER` & `GHOST_MAILGUN_PASS` - __REQUIRED__ [Mailgun](http://www.mailgun.com/) API credentials.

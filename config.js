@@ -21,6 +21,17 @@ config = {
             debug: false
         },
 
+        mail: {
+            transport: 'SMTP',
+            options: {
+                service: 'Mailgun',
+                auth: {
+                    user: process.env.GHOST_MAILGUN_USER,
+                    pass: process.env.GHOST_MAILGUN_PASS
+                 }
+             }
+        },
+
         server: {
             host: '127.0.0.1',
             port: '2368'
