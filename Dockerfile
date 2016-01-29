@@ -1,6 +1,9 @@
 FROM base/archlinux:2015.06.01
 MAINTAINER Peter Cai <peter@typeblog.net>
 
+# Set the mirror
+RUN echo 'Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
+
 # Initialize the environment
 RUN pacman -Syyu --noconfirm
 RUN pacman -S --noconfirm base-devel nodejs npm wget unzip git
