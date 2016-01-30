@@ -24,8 +24,8 @@ RUN git clone https://aur.archlinux.org/nginx-devel.git && \
 RUN pacman -R --noconfirm sudo
 
 # Populate basic Ghost environment
-RUN  wget https://ghost.org/zip/ghost-0.7.5.zip && \
-  unzip ghost-0.7.5.zip && \
+RUN  wget https://github.com/PeterCxy/Ghost/releases/download/0.7.5-master-20160130/release.zip && \
+  unzip release.zip && \
   sed -i 's/preinstall/hhh/g' package.json && \
   npm install --production && \
   mv content content_default
