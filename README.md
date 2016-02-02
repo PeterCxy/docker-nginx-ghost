@@ -2,7 +2,7 @@ docker-nginx-ghost
 ---
 This is a Docker image for running Nginx + Ghost as a service. Ghost is a blog system, while Nginx acts as a reverse proxy to Ghost. As many services like Gravatar cannot be correctly loaded from China, the Nginx replaces them with an accessible proxy using `http_sub` module. It also helps processing HTTPS meta links in Ghost.
 
-Useage
+Usage
 ---
 After building the image, just run
 
