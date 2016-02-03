@@ -1,6 +1,9 @@
 FROM node:argon
 MAINTAINER Peter Cai <peter@typeblog.net>
 
+# Install unzip
+RUN apt-get -y install unzip
+
 # Install nginx
 ENV NGINX_VERSION 1.9.10-1~jessie
 RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 \
