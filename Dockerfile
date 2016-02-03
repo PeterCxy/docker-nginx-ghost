@@ -1,32 +1,17 @@
-FROM base/archlinux:2015.06.01
+FROM node:argon
 MAINTAINER Peter Cai <peter@typeblog.net>
 
-# Set the mirror
-RUN echo 'Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
-
-# Initialize the environment
-RUN pacman -Syyu --noconfirm
-RUN pacman -S --noconfirm base-devel nodejs npm wget unzip git
-
-# Install nginx-devel
-WORKDIR /usr/src/ghost
-RUN echo 'nobody ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
-RUN git clone https://aur.archlinux.org/psol.git && \
-  chmod -R 777 /usr/src/ghost/psol && \
-  cd /usr/src/ghost/psol && \
-  sudo -u nobody makepkg -sci --noconfirm
-RUN git clone https://aur.archlinux.org/nginx-devel.git && \
-  chmod -R 777 /usr/src/ghost/nginx-devel && \
-  cd /usr/src/ghost/nginx-devel && \
-  sudo -u nobody makepkg -sci --noconfirm
-
-# Now remove the sudo program for security
-RUN pacman -R --noconfirm sudo
+# Install nginx
+RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 \
+	&& echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/apt/sources.list \
+	&& apt-get update \
+	&& apt-get install -y ca-certificates nginx=${NGINX_VERSION} gettext-base \
+	&& rm -rf /var/lib/apt/lists/*
 
 # Populate basic Ghost environment
-RUN  wget https://github.com/PeterCxy/Ghost/releases/download/0.7.5-master-20160130/release.zip && \
+WORKDIR /usr/src/ghost
+RUN  wget https://github.com/PeterCxy/Ghost/releases/download/0.7.5-master-20160203/release.zip && \
   unzip release.zip && \
-  sed -i 's/preinstall/hhh/g' package.json && \
   npm install --production && \
   mv content content_default
 
