@@ -1,8 +1,8 @@
 FROM node:argon
 MAINTAINER Peter Cai <peter@typeblog.net>
 
-# Install unzip
-RUN apt-get -y install unzip
+# Install zip
+RUN apt-get -y install zip
 
 # Install nginx
 ENV NGINX_VERSION 1.9.10-1~jessie
